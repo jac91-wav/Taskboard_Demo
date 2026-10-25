@@ -95,5 +95,3 @@ my-app/
 ├─ tests/                         TaskCard, hook, and session-cookie tests (useTaskBoard mocks fetch)
 └─ jest.config.cjs, jest.setup.js, eslint.config.mjs, postcss.config.mjs, tsconfig.json
 ```
-
-Leftovers you can ignore or delete: `public/*.svg` and `my-app/README.md` (create-next-app defaults), `.gitattributes` (from `prisma init`, points at paths that don't exist), and `skills-lock.json` (AI-assistant skill manifest). `.postman/` and `postman/` link the repo to a Postman workspace for manual API testing.
