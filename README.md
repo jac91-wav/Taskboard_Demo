@@ -44,7 +44,7 @@ login/page.tsx ─ fetch ─ /api/session, /api/users ─ bcrypt ─ Prisma
 - **Tags** are a `Json` string array on `Task` (max 10 × 30 chars, validated by Zod), so you can't filter by tag in SQL.
 - **Due dates** are picked as date-only values and sent as the local midnight in UTC ISO format. They show up on the previous day if read as UTC in a timezone east of UTC.
 - **PATCH semantics:** a missing field stays unchanged; `null` clears `category` and `dueDate`.
-- **Auth is a signed cookie, no library.** Sign-up and login set an `httpOnly` `session` cookie of `userId.expiresAt.signature` (HMAC-SHA256 with `SESSION_SECRET`, 7 days). Passwords are bcrypt-hashed (cost 10, 8 to 72 chars). There's no session table, so logging out deletes the cookie but can't revoke a copy of it before it expires.G
+- **Auth is a signed cookie, no library.** Sign-up and login set an `httpOnly` `session` cookie of `userId.expiresAt.signature` (HMAC-SHA256 with `SESSION_SECRET`, 7 days). Passwords are bcrypt-hashed (cost 10, 8 to 72 chars). There's no session table, so logging out deletes the cookie but can't revoke a copy of it before it expires.
 - **Every task query is scoped by `userId`.** `proxy.ts` redirects logged-out page visits to `/login`. API routes skip the proxy and check the cookie themselves. Tasks created before auth existed have `userId = NULL` and don't show up for anyone.
 
 ## API
